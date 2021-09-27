@@ -11,20 +11,10 @@ import java.time.Instant;
 @Table(name = "offers")
 public class Offer extends BaseEntity{
 
-//•	description – some text.
-//            •	engine – enumerated value (GASOLINE, DIESEL, ELECTRIC, HYBRID).
-//            •	imageUrl – the url of image.
-//            •	mileage – a number.
-//            •	price – the price of the offer.
-//•	transmission – enumerated value (MANUAL, AUTOMATIC).
-//            •	year – the year of offered car.
-//•	created – a date and time.
-//            •	modified – a date and time.
-//            •	model – the model of a car.
-//•	seller – a user that sells the car.
+
     @Column(columnDefinition = "TEXT")
     private String description;
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private Engine engine;
     @Column
     private String imageUrl;
@@ -32,16 +22,23 @@ public class Offer extends BaseEntity{
     private BigDecimal price;
     @Column
     private Integer mileage;
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private Transmission transmission;
-    @Column
-    private Instant created;
+
     @OneToOne
     private Model model;
     @ManyToOne
     private User seller;
 
     public Offer() {
+    }
+
+    public Model getModel() {
+        return model;
+    }
+
+    public void setModel(Model model) {
+        this.model = model;
     }
 
     public String getDescription() {
@@ -90,14 +87,6 @@ public class Offer extends BaseEntity{
 
     public void setTransmission(Transmission transmission) {
         this.transmission = transmission;
-    }
-
-    public Instant getCreated() {
-        return created;
-    }
-
-    public void setCreated(Instant created) {
-        this.created = created;
     }
 
     public User getSeller() {

@@ -9,10 +9,7 @@ import java.util.List;
 public class Brand extends BaseEntity{
     @Column(nullable = false, unique = true)
     private String name;
-    @Column
-    private Instant created;
-    @Column
-    private Instant modified;
+
     @OneToMany(mappedBy = "brand", cascade = CascadeType.ALL)
     private List<Model> models;
     public Brand() {
@@ -35,19 +32,5 @@ public class Brand extends BaseEntity{
         this.name = name;
     }
 
-    public Instant getCreated() {
-        return created;
-    }
 
-    public void setCreated(Instant created) {
-        this.created = created;
-    }
-
-    public Instant getModified() {
-        return modified;
-    }
-
-    public void setModified(Instant modified) {
-        this.modified = modified;
-    }
 }

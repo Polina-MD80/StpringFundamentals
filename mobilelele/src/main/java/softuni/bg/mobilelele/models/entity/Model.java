@@ -11,7 +11,7 @@ public class Model extends BaseEntity {
 
     @Column(nullable = false)
     private String name;
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private Category category;
     @Column(length = 512)
     private  String imageUrl;
@@ -19,10 +19,7 @@ public class Model extends BaseEntity {
     private Integer startYear;
     @Column
     private Integer endYear;
-    @Column
-    private Instant created;
-    @Column
-    private Instant modified;
+
     @ManyToOne
     private Brand brand;
 
@@ -69,21 +66,6 @@ public class Model extends BaseEntity {
         this.endYear = endYear;
     }
 
-    public Instant getCreated() {
-        return created;
-    }
-
-    public void setCreated(Instant created) {
-        this.created = created;
-    }
-
-    public Instant getModified() {
-        return modified;
-    }
-
-    public void setModified(Instant modified) {
-        this.modified = modified;
-    }
 
     public Brand getBrand() {
         return brand;

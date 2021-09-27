@@ -21,6 +21,9 @@ dependencies {
     runtimeOnly 'mysql:mysql-connector-java'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation 'org.modelmapper:modelmapper:2.4.4'
+    // https://mvnrepository.com/artifact/org.springframework.security/spring-security-crypto
+    implementation group: 'org.springframework.security', name: 'spring-security-crypto', version: '5.5.2'
+
 }
 
 test {

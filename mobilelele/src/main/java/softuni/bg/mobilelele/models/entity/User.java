@@ -1,10 +1,8 @@
 package softuni.bg.mobilelele.models.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.Instant;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -18,14 +16,11 @@ public class User extends BaseEntity {
     private String lastName;
     @Column
     private Boolean isActive;
-    @OneToOne
-    private UserRole role;
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Set<UserRole> roles;
     @Column
     private String imageUrl;
-    @Column
-    private Instant created;
-    @Column
-    private Instant modified;
+
 
     public User() {
     }
@@ -62,12 +57,12 @@ public class User extends BaseEntity {
         isActive = active;
     }
 
-    public UserRole getRole() {
-        return role;
+    public Set<UserRole> getRoles() {
+        return roles;
     }
 
-    public void setRole(UserRole role) {
-        this.role = role;
+    public void setRoles(Set<UserRole> roles) {
+        this.roles = roles;
     }
 
     public String getImageUrl() {
@@ -78,19 +73,5 @@ public class User extends BaseEntity {
         this.imageUrl = imageUrl;
     }
 
-    public Instant getCreated() {
-        return created;
-    }
 
-    public void setCreated(Instant created) {
-        this.created = created;
-    }
-
-    public Instant getModified() {
-        return modified;
-    }
-
-    public void setModified(Instant modified) {
-        this.modified = modified;
-    }
 }
