@@ -37,7 +37,9 @@ public class LoginUserController {
                 userLoginBindingModel.getUsername(),
                 loginSuccessful);
 
-
+        if (loginSuccessful) {
+            return "redirect:/brands/all";
+        }
         return "redirect:/users/login";
     }
 
