@@ -1,4 +1,4 @@
-package softuni.bg.mobilelele.models.entity.binding;
+package softuni.bg.mobilelele.models.binding;
 
 public class UserLoginBindingModel {
     private String username;

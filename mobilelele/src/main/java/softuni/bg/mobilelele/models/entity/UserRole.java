@@ -1,6 +1,6 @@
 package softuni.bg.mobilelele.models.entity;
 
-import softuni.bg.mobilelele.models.entity.enums.Role;
+import softuni.bg.mobilelele.models.enums.Role;
 
 import javax.persistence.*;
 

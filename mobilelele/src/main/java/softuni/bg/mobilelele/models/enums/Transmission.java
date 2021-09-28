@@ -1,4 +1,4 @@
-package softuni.bg.mobilelele.models.entity.enums;
+package softuni.bg.mobilelele.models.enums;
 
 public enum Transmission {
     MANUAL, AUTOMATIC;

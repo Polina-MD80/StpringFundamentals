@@ -1,11 +1,10 @@
 package softuni.bg.mobilelele.models.entity;
 
-import softuni.bg.mobilelele.models.entity.enums.Engine;
-import softuni.bg.mobilelele.models.entity.enums.Transmission;
+import softuni.bg.mobilelele.models.enums.Engine;
+import softuni.bg.mobilelele.models.enums.Transmission;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.time.Instant;
 
 @Entity
 @Table(name = "offers")
