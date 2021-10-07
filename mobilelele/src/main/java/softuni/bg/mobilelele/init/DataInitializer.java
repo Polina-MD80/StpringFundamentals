@@ -3,7 +3,6 @@ package softuni.bg.mobilelele.init;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import softuni.bg.mobilelele.repository.BrandRepository;
 import softuni.bg.mobilelele.service.BrandService;
 import softuni.bg.mobilelele.service.ModelService;
 import softuni.bg.mobilelele.service.UserService;
@@ -25,7 +24,7 @@ public class DataInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        userService.initializeUsers();
+        userService.initializeUsersAndRoles();
         brandService.initializeBrands();
         modelService.initializeModels();
 

@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface UserService {
 
-    void initializeUsers();
+    void initializeUsersAndRoles();
 
     boolean login(UserLoginServiceModel user);
 
