@@ -38,7 +38,7 @@ public class LoginUserController {
                 loginSuccessful);
 
         if (loginSuccessful) {
-            return "redirect:/brands/all";
+            return "redirect:/";
         }
         return "redirect:/users/login";
     }

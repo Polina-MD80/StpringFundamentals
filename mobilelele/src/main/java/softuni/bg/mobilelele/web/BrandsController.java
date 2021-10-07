@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class BrandsController {
     @GetMapping("/brands/all")
-    public String getAllBrands(){
+    public String getAllBrands() {
         return "brands";
     }
 }

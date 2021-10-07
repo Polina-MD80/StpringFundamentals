@@ -13,7 +13,7 @@ public class Model extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private Category category;
     @Column(length = 512)
-    private  String imageUrl;
+    private String imageUrl;
     @Column
     private Integer startYear;
     @Column

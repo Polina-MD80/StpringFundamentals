@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name = "offers")
-public class Offer extends BaseEntity{
+public class Offer extends BaseEntity {
 
 
     @Column(columnDefinition = "TEXT")

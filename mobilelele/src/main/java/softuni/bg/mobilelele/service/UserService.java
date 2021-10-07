@@ -11,4 +11,6 @@ public interface UserService {
 
     boolean login(UserLoginServiceModel user);
 
+    void logOut();
+
 }

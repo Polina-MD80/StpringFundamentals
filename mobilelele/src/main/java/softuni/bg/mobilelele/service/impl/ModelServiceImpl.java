@@ -27,7 +27,7 @@ public class ModelServiceImpl implements ModelService {
             Model fiesta = new Model();
             Model escort = new Model();
             Brand ford = brandService.findBrandByName("Ford");
-            if (ford!=null) {
+            if (ford != null) {
                 fiesta.setBrand(ford);
                 fiesta.setCategory(Category.CAR);
                 fiesta.setName("Fiesta");

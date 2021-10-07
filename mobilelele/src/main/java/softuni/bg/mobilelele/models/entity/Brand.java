@@ -6,12 +6,13 @@ import java.util.List;
 
 @Entity
 @Table(name = "brands")
-public class Brand extends BaseEntity{
+public class Brand extends BaseEntity {
     @Column(nullable = false, unique = true)
     private String name;
 
     @OneToMany(mappedBy = "brand", cascade = CascadeType.ALL)
     private List<Model> models;
+
     public Brand() {
     }
 

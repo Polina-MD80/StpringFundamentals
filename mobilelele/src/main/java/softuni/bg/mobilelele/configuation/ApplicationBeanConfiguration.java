@@ -12,8 +12,9 @@ public class ApplicationBeanConfiguration {
     public ModelMapper modelMapper() {
         return new ModelMapper();
     }
+
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return new Pbkdf2PasswordEncoder();
     }
 }
