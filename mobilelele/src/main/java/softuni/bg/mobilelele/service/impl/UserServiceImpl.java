@@ -6,6 +6,7 @@ import softuni.bg.mobilelele.models.entity.User;
 import softuni.bg.mobilelele.models.entity.UserRole;
 import softuni.bg.mobilelele.models.enums.Role;
 import softuni.bg.mobilelele.models.service.UserLoginServiceModel;
+import softuni.bg.mobilelele.models.service.UserRegistrationServiceModel;
 import softuni.bg.mobilelele.repository.RoleRepository;
 import softuni.bg.mobilelele.user.CurrentUser;
 import softuni.bg.mobilelele.repository.UserRepository;
@@ -49,7 +50,7 @@ public class UserServiceImpl implements UserService {
             admin.setUsername("admin");
             admin.setPassword(passwordEncoder.encode("test"));
             admin.setActive(true);
-            admin.setRoles(Set.of(adminRole,userRole));
+            admin.setRoles(Set.of(adminRole, userRole));
 
             User pesho = new User();
             pesho.setFirstName("Pesho");
@@ -59,7 +60,7 @@ public class UserServiceImpl implements UserService {
             pesho.setActive(true);
             pesho.setRoles(Set.of(userRole));
 
-            userRepository.saveAll(List.of(admin,pesho));
+            userRepository.saveAll(List.of(admin, pesho));
         }
     }
 
@@ -98,11 +99,27 @@ public class UserServiceImpl implements UserService {
                 .setUsername(user.getUsername())
                 .setFirstName(user.getFirstName())
                 .setLastName(user.getLastName());
-        user.getRoles().forEach(r-> currentUser.addRole(r.getName()));
+        user.getRoles().forEach(r -> currentUser.addRole(r.getName()));
     }
 
     @Override
     public void logOut() {
         currentUser.clean();
+    }
+
+    @Override
+    public void registerAndLoginUser(UserRegistrationServiceModel userRegistrationServiceModel) {
+
+        UserRole userRole = roleRepository.findByName(Role.USER);
+        User newUser = new User();
+        newUser.setUsername(userRegistrationServiceModel.getUsername())
+                .setFirstName(userRegistrationServiceModel.getFirstName())
+                .setLastName(userRegistrationServiceModel.getLastName())
+                .setActive(true)
+                .setPassword(passwordEncoder.encode(userRegistrationServiceModel.getPassword()))
+                .setRoles(Set.of(userRole));
+
+        userRepository.save(newUser);
+        login(newUser);
     }
 }
