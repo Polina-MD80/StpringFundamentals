@@ -24,7 +24,7 @@ public class Offer extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private Transmission transmission;
 
-    @OneToOne
+    @ManyToOne
     private Model model;
     @ManyToOne
     private User seller;
