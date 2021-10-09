@@ -1,9 +1,18 @@
 package softuni.bg.mobilelele.models.binding;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 public class UserRegistrationBindingModel {
+    @Size(min = 2, max = 20)
     private String firstName;
+    @Size(min = 2, max = 20)
     private String lastName;
+    @Size(min = 2, max = 20)
+    @NotBlank
     private String username;
+    @Size(min = 2, max = 20)
+    @NotBlank
     private String password;
 
     public String getFirstName() {

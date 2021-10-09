@@ -18,12 +18,13 @@ public class Offer extends BaseEntity {
     @Column
     private String imageUrl;
     @Column
-    private BigDecimal price;
+    private Integer price;
     @Column
     private Integer mileage;
     @Enumerated(EnumType.STRING)
     private Transmission transmission;
-
+    @Column
+    private Integer year;
     @ManyToOne
     private Model model;
     @ManyToOne
@@ -32,67 +33,84 @@ public class Offer extends BaseEntity {
     public Offer() {
     }
 
-    public Model getModel() {
-        return model;
-    }
-
-    public void setModel(Model model) {
-        this.model = model;
-    }
-
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public Offer setDescription(String description) {
         this.description = description;
+        return this;
     }
 
     public Engine getEngine() {
         return engine;
     }
 
-    public void setEngine(Engine engine) {
+    public Offer setEngine(Engine engine) {
         this.engine = engine;
+        return this;
     }
 
     public String getImageUrl() {
         return imageUrl;
     }
 
-    public void setImageUrl(String imageUrl) {
+    public Offer setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+        return this;
     }
 
-    public BigDecimal getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public Offer setPrice(Integer price) {
         this.price = price;
+        return this;
     }
 
     public Integer getMileage() {
         return mileage;
     }
 
-    public void setMileage(Integer mileage) {
+    public Offer setMileage(Integer mileage) {
         this.mileage = mileage;
+        return this;
     }
 
     public Transmission getTransmission() {
         return transmission;
     }
 
-    public void setTransmission(Transmission transmission) {
+    public Offer setTransmission(Transmission transmission) {
         this.transmission = transmission;
+        return this;
+    }
+
+    public Integer getYear() {
+        return year;
+    }
+
+    public Offer setYear(Integer year) {
+        this.year = year;
+        return this;
+    }
+
+    public Model getModel() {
+        return model;
+    }
+
+    public Offer setModel(Model model) {
+        this.model = model;
+        return this;
     }
 
     public User getSeller() {
         return seller;
     }
 
-    public void setSeller(User seller) {
+    public Offer setSeller(User seller) {
         this.seller = seller;
+        return this;
     }
 }

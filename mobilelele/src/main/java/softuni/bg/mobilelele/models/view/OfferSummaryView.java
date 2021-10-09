@@ -8,81 +8,99 @@ public class OfferSummaryView {
     private String description;
     private Engine engine;
     private String imageUrl;
-    private int mileage;
-    private int price;
+    private Integer mileage;
+    private Integer price;
     private Transmission transmission;
-    private int year;
+    private Integer year;
     private String model;
-
+    private String brand;
     public long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public String getBrand() {
+        return brand;
+    }
+
+    public OfferSummaryView setBrand(String brand) {
+        this.brand = brand;
+        return this;
+    }
+
+    public OfferSummaryView setId(long id) {
         this.id = id;
+        return this;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public OfferSummaryView setDescription(String description) {
         this.description = description;
+        return this;
     }
 
     public Engine getEngine() {
         return engine;
     }
 
-    public void setEngine(Engine engine) {
+    public OfferSummaryView setEngine(Engine engine) {
         this.engine = engine;
+        return this;
     }
 
     public String getImageUrl() {
         return imageUrl;
     }
 
-    public void setImageUrl(String imageUrl) {
+    public OfferSummaryView setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+        return this;
     }
 
-    public int getMileage() {
+    public Integer getMileage() {
         return mileage;
     }
 
-    public void setMileage(int mileage) {
+    public OfferSummaryView setMileage(Integer mileage) {
         this.mileage = mileage;
+        return this;
     }
 
-    public int getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public OfferSummaryView setPrice(Integer price) {
         this.price = price;
+        return this;
     }
 
     public Transmission getTransmission() {
         return transmission;
     }
 
-    public void setTransmission(Transmission transmission) {
+    public OfferSummaryView setTransmission(Transmission transmission) {
         this.transmission = transmission;
+        return this;
     }
 
-    public int getYear() {
+    public Integer getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public OfferSummaryView setYear(Integer year) {
         this.year = year;
+        return this;
     }
 
     public String getModel() {
         return model;
     }
 
-    public void setModel(String model) {
+    public OfferSummaryView setModel(String model) {
         this.model = model;
+        return this;
     }
 }

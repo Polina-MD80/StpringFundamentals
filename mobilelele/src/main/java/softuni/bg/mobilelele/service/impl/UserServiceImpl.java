@@ -122,4 +122,9 @@ public class UserServiceImpl implements UserService {
         userRepository.save(newUser);
         login(newUser);
     }
+
+    @Override
+    public boolean isUserNameFree(String username) {
+        return   !userRepository.existsByUsernameIgnoreCase(username);
+    }
 }
