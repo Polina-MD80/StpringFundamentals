@@ -46,6 +46,7 @@ public class OfferServiceImpl implements OfferService {
                     .setImageUrl(
                             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcXp1KBpDKgYs6VqndkBpX8twjPOZbHV86yg&usqp=CAU");
 
+
             Offer offer2 = new Offer();
             offer2
                     .setModel(modelRepository.findById(1L).orElse(null))
@@ -59,6 +60,7 @@ public class OfferServiceImpl implements OfferService {
                             .orElse(null)) // or currentUser.getUserName()
                     .setImageUrl(
                             "https://www.picclickimg.com/d/l400/pict/283362908243_/FORD-ESCORT-MK5-16L-DOHC-16v-ZETEC.jpg");
+
 
             offerRepository.saveAll(List.of(offer1, offer2));
         }
@@ -79,8 +81,8 @@ public class OfferServiceImpl implements OfferService {
         detailsView.setBrand(offer.getModel().getBrand().getName())
                 .setModel(offer.getModel().getName())
                 .setSellerFullName(String.format("%s %s", offer.getSeller().getFirstName(),
-                        offer.getSeller().getLastName()))
-                .setImageUrl(offer.getImageUrl());
+                        offer.getSeller().getLastName()));
+
         return detailsView;
     }
 
