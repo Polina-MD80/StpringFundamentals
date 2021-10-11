@@ -22,10 +22,19 @@ public class User extends BaseEntity {
     private Level level;
     @Column(nullable = false, unique = true)
     private String username;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
 
     public User() {
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public User setUsername(String username) {
+        this.username = username;
+        return this;
     }
 
     public Integer getAge() {
