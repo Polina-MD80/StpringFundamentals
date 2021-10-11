@@ -10,11 +10,11 @@ import softuni.bg.pathfinder.util.CurrentUser;
 @RequestMapping("/users")
 public class UserLogoutController {
     private final UserService userService;
-    private final CurrentUser currentUser;
 
-    public UserLogoutController(UserService userService, CurrentUser currentUser) {
+
+    public UserLogoutController(UserService userService) {
         this.userService = userService;
-        this.currentUser = currentUser;
+
     }
 
     @GetMapping("logout")

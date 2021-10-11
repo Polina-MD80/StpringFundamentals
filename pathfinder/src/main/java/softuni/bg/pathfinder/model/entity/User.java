@@ -24,6 +24,8 @@ public class User extends BaseEntity {
     private String username;
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
+    @OneToMany(mappedBy = "author", fetch = FetchType.EAGER)
+    private Set<Route> routes;
 
     public User() {
     }
