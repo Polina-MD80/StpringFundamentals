@@ -86,6 +86,11 @@ public class OfferServiceImpl implements OfferService {
         return detailsView;
     }
 
+    @Override
+    public void deleteOffer(Long id) {
+        offerRepository.deleteById(id);
+    }
+
     private OfferSummaryView mapToSummary(Offer offer) {
         OfferSummaryView summaryView = this.modelMapper
                 .map(offer, OfferSummaryView.class);
