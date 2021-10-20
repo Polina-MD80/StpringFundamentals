@@ -6,10 +6,10 @@
 <main class="p-5 align-content-center bg-blur my-main">
     <h2 th:object="${totalCopies}" th:text="|Total sold copies
         of all albums: ${totalCopies}|" class="text-light border-bottom"></h2>
-    <div class="row">
+    <div th:each="a : ${albums}" th:object="${a}" class="row">
         <div class="col-md-3">
-            <div th:each="a : ${albums}" th:object="${a}" class="card mb-4 box-shadow">
-                <img th:src="'/image/'+ *{artist.name.name().toLowerCase()} + '.jpg'" class="card-img-top" alt="Thumbnail [100%x225]"
+            <div  class="card mb-4 box-shadow">
+                <img th:src="'/img/'+ *{artist.name.name().toLowerCase()} + '.jpg'" class="card-img-top" alt="Thumbnail [100%x225]"
                      data-holder-rendered="true"
                      style="height: 225px; width: 100%; display: block;">
                 <div class="card-body">
