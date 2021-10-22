@@ -2,14 +2,23 @@ package softuni.spring.service.impl;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
-import softuni.spring.model.entity.UserEntity;
-import softuni.spring.model.service.UserServiceModel;
 import softuni.spring.repository.UserRepository;
 import softuni.spring.service.UserService;
-import softuni.spring.user.CurrentUser;
 
 @Service
 public class UserServiceImpl implements UserService {
+    private final  UserRepository userRepository;
+    private final ModelMapper modelMapper;
+
+    public UserServiceImpl(UserRepository userRepository, ModelMapper modelMapper) {
+        this.userRepository = userRepository;
+        this.modelMapper = modelMapper;
+    }
+
+//    @Override
+//    public boolean isUserNameFree(String userName) {
+//        return !userRepository.exists(userName);
+//    }
 //    private final CurrentUser currentUser;
 //    private final UserRepository userRepository;
 //    private final ModelMapper modelMapper;

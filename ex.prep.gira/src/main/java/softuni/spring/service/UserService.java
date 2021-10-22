@@ -11,4 +11,6 @@ public interface UserService {
     void loginUser(UserServiceModel userServiceModel);
 
     UserEntity findById(Long id);
+
+    boolean isEmailFree(String email);
 }
