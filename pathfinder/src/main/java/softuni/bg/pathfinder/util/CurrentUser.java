@@ -11,6 +11,7 @@ import java.util.Set;
 @Component
 @SessionScope
 public class CurrentUser {
+    private Long id;
     private String username;
     private String fullName;
     private boolean isLoggedIn;
@@ -25,6 +26,15 @@ public class CurrentUser {
 
     public CurrentUser setUsername(String username) {
         this.username = username;
+        return this;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public CurrentUser setId(Long id) {
+        this.id = id;
         return this;
     }
 

@@ -33,7 +33,6 @@ public class UserRegisterController {
     }
 
 
-
     @GetMapping("/register")
     public String register() {
 
@@ -63,8 +62,6 @@ public class UserRegisterController {
 
         return "redirect:login";
     }
-
-
 
 
 }

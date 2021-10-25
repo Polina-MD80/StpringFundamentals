@@ -32,8 +32,18 @@ public class Picture extends BaseEntity{
         return url;
     }
 
-    public void setUrl(String url) {
+    public User getAuthor() {
+        return author;
+    }
+
+    public Picture setAuthor(User author) {
+        this.author = author;
+        return this;
+    }
+
+    public Picture setUrl(String url) {
         this.url = url;
+        return this;
     }
 
     public User getUser() {

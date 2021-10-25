@@ -1,5 +1,6 @@
 package softuni.bg.pathfinder.web;
 
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,7 @@ public class HomeController {
         this.currentUser = currentUser;
         this.pictureService = pictureService;
     }
+
 
     @GetMapping("/")
     public String index(Model model){

@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import softuni.bg.pathfinder.service.RouteService;
 
@@ -16,7 +17,7 @@ public class RoutesController {
         this.routeService = routeService;
     }
 
-    @GetMapping
+    @GetMapping("all")
     public String routes(Model model){
         model.addAttribute("routes", this.routeService.findAllRoutes());
         return "routes";
@@ -26,6 +27,18 @@ public class RoutesController {
     public String details(@PathVariable Long id, Model model){
         model.addAttribute("route", routeService.findRouteById(id));
         return "route-details";
+    }
+
+    @GetMapping("/add")
+    public String addRoute(){
+        return "add-route";
+    }
+
+    @PostMapping("/add")
+    private String confAddRoute(){
+
+
+        return "redirect:/";
     }
 
 

@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import softuni.bg.pathfinder.service.UserService;
 import softuni.bg.pathfinder.util.CurrentUser;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("/users")
 public class UserLogoutController {
@@ -18,8 +20,8 @@ public class UserLogoutController {
     }
 
     @GetMapping("logout")
-    public String logout(){
-        userService.logout();
+    public String logout(HttpSession httpSession){
+        httpSession.invalidate();
         return "redirect:/";
     }
 }
