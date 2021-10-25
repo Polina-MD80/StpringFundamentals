@@ -1,7 +1,5 @@
 package softuni.spring.model.binding;
 
-import softuni.spring.model.validation.UniqueEmailName;
-
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -14,9 +12,8 @@ public class UserRegisterBindingModel {
     @NotBlank
     @Size(min = 3, max = 20, message = "Password length must be between 3 and 20 characters ")
     private String password;
-    @NotBlank
+    @NotNull
     @Email
-    @UniqueEmailName
     private String email;
     @NotBlank
     @Size(min = 3, max = 20, message = "Password length must be between 3 and 20 characters ")

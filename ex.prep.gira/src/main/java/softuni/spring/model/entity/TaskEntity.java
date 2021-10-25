@@ -8,18 +8,7 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "tasks")
 public class TaskEntity extends BaseEntity{
-//    •	Has a Name (unique)
-//    o	Name length must be between 3 and 20 characters (inclusive 3 and 20).
-//            •	Has a Description
-//    o	Description min length must be minimum 5(inclusive) characters
-//•	Has a Progress (unique)
-//    o	Option between (OPEN, IN_PROGRESS, COMPLETED, OTHER)
-//•	Has a Due Date
-//    o	A date, that cannot be in the past
-//•	Has a Classification
-//    o	Classification cannot be null.
-//            •	Has a User
-//    o	Cannot be null.
+//
     @Column(nullable = false, unique = true)
     private String name;
     @Column(nullable = false)

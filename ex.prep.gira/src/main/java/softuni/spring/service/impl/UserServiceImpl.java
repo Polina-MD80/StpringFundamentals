@@ -1,7 +1,6 @@
 package softuni.spring.service.impl;
 
 import org.modelmapper.ModelMapper;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import softuni.spring.model.entity.UserEntity;
 import softuni.spring.model.service.UserServiceModel;
@@ -14,13 +13,11 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final ModelMapper modelMapper;
     private final CurrentUser currentUser;
-    private final PasswordEncoder passwordEncoder;
 
-    public UserServiceImpl(UserRepository userRepository, ModelMapper modelMapper, CurrentUser currentUser, PasswordEncoder passwordEncoder) {
+    public UserServiceImpl(UserRepository userRepository, ModelMapper modelMapper, CurrentUser currentUser) {
         this.userRepository = userRepository;
         this.modelMapper = modelMapper;
         this.currentUser = currentUser;
-        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -37,13 +34,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean isUserExist(String email, String password) {
-        if (userRepository.existsByEmail(email)){
-            UserEntity userEntityByEmail = userRepository.findUserEntityByEmail(email).orElse(null);
-            if (userEntityByEmail!=null){
-                return passwordEncoder.matches(password, userEntityByEmail.getPassword());
-            }
-        }
-        return false;
+        return userRepository.existsByEmailAndPassword(email,password);
     }
 
     @Override
@@ -59,10 +50,5 @@ public class UserServiceImpl implements UserService {
     public UserEntity findById(Long id) {
 
         return userRepository.findById(id).orElse(null);
-    }
-
-    @Override
-    public boolean isEmailFree(String email) {
-        return !userRepository.existsByEmail(email);
     }
 }

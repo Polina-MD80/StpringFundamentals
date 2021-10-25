@@ -7,7 +7,6 @@ import org.springframework.web.context.annotation.SessionScope;
 @SessionScope
 public class CurrentUser {
     private Long id;
-    private String username;
 
     public CurrentUser() {
     }
@@ -18,15 +17,6 @@ public class CurrentUser {
 
     public CurrentUser setId(Long id) {
         this.id = id;
-        return this;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public CurrentUser setUsername(String username) {
-        this.username = username;
         return this;
     }
 }

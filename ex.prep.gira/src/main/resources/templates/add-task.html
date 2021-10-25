@@ -13,33 +13,33 @@
                 <div class="label-holder textCol d-flex justify-content-center">
                     <label for="name" class="h4 mb-2">Name</label>
                 </div>
-                <input th:field="*{name}" th:errorclass="'bg-danger is-invalid'" type="text"  class="form-control" id="name" name="name"/>
-                <small th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="invalid-feedback  text-danger">Name length </small>
+                <input th:field="*{name}" th:errorclass="is-invalid" type="text"  class="form-control" id="name" name="name"/>
+                <small class="invalid-feedback text-danger">Name length must be between 3 and 20 characters</small>
             </div>
             <div class="form-group">
                 <div class="label-holder textCol d-flex justify-content-center">
                     <label for="description" class="h4 mb-2">Description</label>
                 </div>
-                <input th:field="*{description}" th:errorclass="'bg-danger is-invalid'" type="text" class="form-control" id="description" name="description"/>
+                <input th:field="*{description}" th:errorclass="is-invalid" type="text" class="form-control" id="description" name="description"/>
 
-                <small th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="invalid-feedback text-danger">Description min length must be minimum 5</small>
+                <small class="invalid-feedback text-danger">Description min length must be minimum 5</small>
             </div>
             <div class="form-group">
                 <div class="label-holder  textCol d-flex justify-content-center">
                     <label for="dueDate" class="h4 mb-2">Due Date</label>
                 </div>
-                <input th:field="*{dueDate}" th:errorclass="'bg-danger is-invalid'" type="date" class="form-control" id="dueDate" name="dueDate"/>
-                <small th:if="${#fields.hasErrors('dueDate')}" th:errors="*{dueDate}" class="invalid-feedback text-danger">Date cannot be in the past</small>
+                <input th:field="*{dueDate}" th:errorclass="is-invalid" type="date" class="form-control" id="dueDate" name="dueDate"/>
+                <small class="invalid-feedback text-danger">Date cannot be in the past</small>
             </div>
             <div class="form-group">
                 <div class="label-holder  textCol d-flex justify-content-center">
                     <label for="classification" class="h4 mb-2">Classification</label>
                 </div>
-                <select th:field="*{classification}" th:errorclass="'bg-danger is-invalid'" type="text" class="form-control" id="classification" name="classification">
+                <select th:field="*{classification}" th:errorclass="is-invalid" type="text" class="form-control" id="classification" name="classification">
                     <option value="">Select Classification</option>
                     <option th:each="c : ${T(softuni.spring.model.entity.enums.ClassificationNameEnum).values()}" th:value="${c}" th:text="${c}">FEATURE</option>
                 </select>
-                <small th:if="${#fields.hasErrors('classification')}" th:errors="*{classification}" class="invalid-feedback text-danger">Classification cannot be null</small>
+                <small class="invalid-feedback text-danger">Classification cannot be null</small>
             </div>
 
             <div class="button-holder d-flex justify-content-center">

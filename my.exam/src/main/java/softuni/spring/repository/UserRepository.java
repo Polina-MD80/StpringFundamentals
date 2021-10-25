@@ -6,6 +6,6 @@ import softuni.spring.model.entity.UserEntity;
 import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
-
-   // Optional<UserEntity> findByUsernameAndPassword(String username, String password);
+  boolean existsByUsername(String username);
+ Optional<UserEntity> findByUsernameAndPassword(String username, String password);
 }

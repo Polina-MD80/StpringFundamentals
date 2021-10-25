@@ -17,7 +17,7 @@ public class OrderBindingModel {
     @PastOrPresent(message = "Order time cannot be in the future.")
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime time;
-    @NotNull
+    @NotNull(message = "category can not be null")
     private CategoryName category;
     @NotBlank
     @Size(min = 5)

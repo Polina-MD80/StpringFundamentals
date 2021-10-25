@@ -1,7 +1,6 @@
 package softuni.spring.web;
 
 import org.modelmapper.ModelMapper;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,29 +22,28 @@ import javax.validation.Valid;
 public class UserController {
     private final UserService userService;
     private final ModelMapper modelMapper;
-    private final PasswordEncoder passwordEncoder;
 
-    public UserController(UserService userService, ModelMapper modelMapper, PasswordEncoder passwordEncoder) {
+    public UserController(UserService userService, ModelMapper modelMapper) {
         this.userService = userService;
         this.modelMapper = modelMapper;
-        this.passwordEncoder = passwordEncoder;
     }
 
 
     @GetMapping("register")
-    private String register(Model model) {
-        model.addAttribute("userNameOrEmailIsOccupied", false);
+    private String register( ) {
+
         return "register";
     }
 
     @GetMapping("login")
-    private String login(Model model) {
-        model.addAttribute("invalidUser", false);
+    private String login() {
+
         return "login";
     }
 
     @ModelAttribute
     public UserRegisterBindingModel userRegisterBindingModel() {
+
         return new UserRegisterBindingModel();
     }
 
@@ -60,7 +58,6 @@ public class UserController {
 
             return "redirect:register";
         }
-        userRegisterBindingModel.setPassword(passwordEncoder.encode(userRegisterBindingModel.getPassword()));
 
         UserServiceModel userServiceModel = modelMapper.map(userRegisterBindingModel, UserServiceModel.class);
 
@@ -68,7 +65,7 @@ public class UserController {
         if (!success){
             redirectAttributes.addFlashAttribute("userRegisterBindingModel", userRegisterBindingModel);
             redirectAttributes.addFlashAttribute("userNameOrEmailIsOccupied", true);
-                  return "redirect:/register";
+                  return "redirect:register";
         }
 
         return "redirect:login";
@@ -90,8 +87,6 @@ public class UserController {
 
             return "redirect:login";
         }
-
-
 
         UserServiceModel userServiceModel = modelMapper.map(userLoginBindingModel, UserServiceModel.class);
 
