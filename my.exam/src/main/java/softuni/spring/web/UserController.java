@@ -12,6 +12,7 @@ import softuni.spring.model.binding.UserLoginBindingModel;
 import softuni.spring.model.binding.UserRegisterBindingModel;
 import softuni.spring.model.service.UserServiceModel;
 import softuni.spring.service.UserService;
+import softuni.spring.user.CurrentUser;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -22,21 +23,27 @@ public class UserController {
 
     private final UserService userService;
     private final ModelMapper modelMapper;
+    private final CurrentUser currentUser;
 
-    public UserController(UserService userService, ModelMapper modelMapper) {
+    public UserController(UserService userService, ModelMapper modelMapper, CurrentUser currentUser) {
 
         this.userService = userService;
         this.modelMapper = modelMapper;
+        this.currentUser = currentUser;
     }
+
     @ModelAttribute
-    public UserRegisterBindingModel userRegisterBindingModel(){
+    public UserRegisterBindingModel userRegisterBindingModel() {
         return new UserRegisterBindingModel();
     }
 
     @GetMapping("register")
     public String register() {
+        if (currentUser.getId() == null) {
 
-        return "register";
+            return "register";
+        }
+        return "redirect:/";
     }
 
     @PostMapping("register")
@@ -61,26 +68,30 @@ public class UserController {
     }
 
     @ModelAttribute
-    public UserLoginBindingModel userLoginBindingModel(){
+    public UserLoginBindingModel userLoginBindingModel() {
         return new UserLoginBindingModel();
     }
 
     @GetMapping("/login")
     public String login() {
-        return "login";
+        if (currentUser.getId() == null){
+
+            return "login";
+        }
+        return "redirect:/";
     }
 
     @PostMapping("/login")
     public String loginConfirm(@Valid UserLoginBindingModel userLoginBindingModel, BindingResult bindingResult,
                                RedirectAttributes redirectAttributes) {
-        if (bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("userLoginBindingModel", userLoginBindingModel);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userLoginBindingModel", bindingResult);
         }
         UserServiceModel userServiceModel = userService
                 .findByUsernameAndPassword(userLoginBindingModel.getUsername(), userLoginBindingModel.getPassword());
 
-        if (userServiceModel==null){
+        if (userServiceModel == null) {
             redirectAttributes.addFlashAttribute("userLoginBindingModel", userLoginBindingModel);
             redirectAttributes.addFlashAttribute("isNotFound", true);
             return "redirect:login";
@@ -92,7 +103,7 @@ public class UserController {
     }
 
     @GetMapping("logout")
-    public String logout(HttpSession httpSession){
+    public String logout(HttpSession httpSession) {
         httpSession.invalidate();
         return "redirect:/";
     }
