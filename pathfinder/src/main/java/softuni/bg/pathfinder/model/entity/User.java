@@ -1,7 +1,6 @@
 package softuni.bg.pathfinder.model.entity;
 
-import softuni.bg.pathfinder.model.entity.BaseEntity;
-import softuni.bg.pathfinder.model.entity.enums.Level;
+import softuni.bg.pathfinder.model.entity.enums.LevelEnum;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -19,7 +18,7 @@ public class User extends BaseEntity {
     @Column()
     private String email;
     @Enumerated(EnumType.STRING)
-    private Level level;
+    private LevelEnum level;
     @Column(nullable = false, unique = true)
     private String username;
     @ManyToMany(fetch = FetchType.EAGER)
@@ -71,11 +70,11 @@ public class User extends BaseEntity {
         this.email = email;
     }
 
-    public Level getLevel() {
+    public LevelEnum getLevel() {
         return level;
     }
 
-    public void setLevel(Level level) {
+    public void setLevel(LevelEnum level) {
         this.level = level;
     }
 

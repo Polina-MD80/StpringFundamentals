@@ -16,4 +16,6 @@ public interface UserService {
     void logout();
 
     UserProfileView findByUsername(String username);
+
+    User findCurrentUserEntity();
 }

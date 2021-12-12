@@ -3,7 +3,7 @@ package softuni.bg.pathfinder.model.view;
 import softuni.bg.pathfinder.model.entity.Category;
 import softuni.bg.pathfinder.model.entity.Picture;
 import softuni.bg.pathfinder.model.entity.User;
-import softuni.bg.pathfinder.model.entity.enums.Level;
+import softuni.bg.pathfinder.model.entity.enums.LevelEnum;
 
 import java.util.Set;
 
@@ -11,7 +11,7 @@ public class RouteViewModel {
     private Long id;
     private String description;
     private String gpxCoordinates;
-    private Level level;
+    private LevelEnum level;
     private String name;
     private String videoUrl;
     private User author;
@@ -58,11 +58,11 @@ public class RouteViewModel {
         return this;
     }
 
-    public Level getLevel() {
+    public LevelEnum getLevel() {
         return level;
     }
 
-    public RouteViewModel setLevel(Level level) {
+    public RouteViewModel setLevel(LevelEnum level) {
         this.level = level;
         return this;
     }

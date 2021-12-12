@@ -1,6 +1,6 @@
 package softuni.bg.pathfinder.model.entity;
 
-import softuni.bg.pathfinder.model.entity.enums.Level;
+import softuni.bg.pathfinder.model.entity.enums.LevelEnum;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -13,7 +13,7 @@ public class Route extends BaseEntity {
     @Column(columnDefinition = "LONGTEXT")
     private String gpxCoordinates;
     @Enumerated(EnumType.STRING)
-    private Level level;
+    private LevelEnum level;
     @Column(nullable = false, unique = true)
     private String name;
     @Column
@@ -63,11 +63,11 @@ public class Route extends BaseEntity {
         return this;
     }
 
-    public Level getLevel() {
+    public LevelEnum getLevel() {
         return level;
     }
 
-    public Route setLevel(Level level) {
+    public Route setLevel(LevelEnum level) {
         this.level = level;
         return this;
     }

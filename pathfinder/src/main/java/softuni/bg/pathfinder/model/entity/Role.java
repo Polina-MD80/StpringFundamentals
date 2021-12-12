@@ -1,6 +1,6 @@
 package softuni.bg.pathfinder.model.entity;
 
-import softuni.bg.pathfinder.model.entity.enums.RoleName;
+import softuni.bg.pathfinder.model.entity.enums.RoleNameEnum;
 
 import javax.persistence.*;
 
@@ -9,16 +9,16 @@ import javax.persistence.*;
 public class Role extends BaseEntity{
   @Enumerated(EnumType.STRING)
   @Column(name = "role")
-  private RoleName roleName;
+  private RoleNameEnum roleName;
 
   public Role() {
   }
 
-  public RoleName getRoleName() {
+  public RoleNameEnum getRoleName() {
     return roleName;
   }
 
-  public void setRoleName(RoleName roleName) {
+  public void setRoleName(RoleNameEnum roleName) {
     this.roleName = roleName;
   }
 }

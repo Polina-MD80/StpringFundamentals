@@ -5,8 +5,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import softuni.bg.pathfinder.model.entity.Role;
 import softuni.bg.pathfinder.model.entity.User;
-import softuni.bg.pathfinder.model.entity.enums.Level;
-import softuni.bg.pathfinder.model.entity.enums.RoleName;
+import softuni.bg.pathfinder.model.entity.enums.LevelEnum;
+import softuni.bg.pathfinder.model.entity.enums.RoleNameEnum;
 import softuni.bg.pathfinder.model.service.UserLoginServiceModel;
 import softuni.bg.pathfinder.model.service.UserRegisterServiceModel;
 import softuni.bg.pathfinder.model.view.UserProfileView;
@@ -40,15 +40,15 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User register(UserRegisterServiceModel registerServiceModel) {
-        Role roleUser = this.roleRepository.findByRoleName(RoleName.USER);
-        Role roleAdmin = this.roleRepository.findByRoleName(RoleName.ADMIN);
+        Role roleUser = this.roleRepository.findByRoleName(RoleNameEnum.USER);
+        Role roleAdmin = this.roleRepository.findByRoleName(RoleNameEnum.ADMIN);
         registerServiceModel.getRoles().add(roleUser);
         if (userRepository.count() == 0) {
             registerServiceModel.getRoles().add(roleAdmin);
         }
         User newUser = modelMapper.map(registerServiceModel, User.class);
 
-        newUser.setLevel(Level.BEGINNER);
+        newUser.setLevel(LevelEnum.BEGINNER);
         System.out.println("Can we just register?");
         userRepository.save(newUser);
 
@@ -61,7 +61,7 @@ public class UserServiceImpl implements UserService {
         if (user == null) {
             return false;
         }
-        if (user.getPassword().equals(userLoginServiceModel.getPassword())){
+        if (user.getPassword().equals(userLoginServiceModel.getPassword())) {
             loginUser(user);
             System.out.printf("%s is logged in", user.getUsername());
             return true;
@@ -74,14 +74,22 @@ public class UserServiceImpl implements UserService {
         currentUser.setUsername(user.getUsername())
                 .setFullName(user.getFullName())
                 .setLoggedIn(true)
-                .setRoles(user.getRoles());
+                .setRoles(user.getRoles())
+                .setId(user.getId());
     }
-    public void logout(){
+
+    public void logout() {
         currentUser.clearCurrentUser();
     }
 
     @Override
     public UserProfileView findByUsername(String username) {
         return modelMapper.map(userRepository.findByUsername(username), UserProfileView.class);
+    }
+
+    @Override
+    public User findCurrentUserEntity() {
+
+        return userRepository.findById(currentUser.getId()).orElse(null);
     }
 }

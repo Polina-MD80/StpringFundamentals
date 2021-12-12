@@ -1,9 +1,8 @@
 package softuni.bg.pathfinder.model.view;
 
 import softuni.bg.pathfinder.model.entity.Role;
-import softuni.bg.pathfinder.model.entity.enums.Level;
+import softuni.bg.pathfinder.model.entity.enums.LevelEnum;
 
-import javax.persistence.*;
 import java.util.Set;
 
 public class UserProfileView {
@@ -16,7 +15,7 @@ public class UserProfileView {
 
     private String email;
 
-    private Level level;
+    private LevelEnum level;
 
     private String username;
 
@@ -58,11 +57,11 @@ public class UserProfileView {
         return this;
     }
 
-    public Level getLevel() {
+    public LevelEnum getLevel() {
         return level;
     }
 
-    public UserProfileView setLevel(Level level) {
+    public UserProfileView setLevel(LevelEnum level) {
         this.level = level;
         return this;
     }

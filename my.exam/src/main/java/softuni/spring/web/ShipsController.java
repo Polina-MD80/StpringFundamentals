@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import softuni.spring.model.binding.BattleBindingModel;
 import softuni.spring.model.binding.ShipAddBindingModel;
 import softuni.spring.model.service.ShipServiceModel;
 import softuni.spring.service.ShipService;

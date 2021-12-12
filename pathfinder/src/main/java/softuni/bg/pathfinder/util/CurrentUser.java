@@ -3,7 +3,6 @@ package softuni.bg.pathfinder.util;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
 import softuni.bg.pathfinder.model.entity.Role;
-import softuni.bg.pathfinder.model.entity.enums.RoleName;
 
 import java.util.HashSet;
 import java.util.Set;

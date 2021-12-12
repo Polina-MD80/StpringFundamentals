@@ -1,5 +1,6 @@
 package softuni.bg.pathfinder.service;
 
+import softuni.bg.pathfinder.model.service.RouteServiceModel;
 import softuni.bg.pathfinder.model.view.RouteViewModel;
 
 import java.util.List;
@@ -9,4 +10,7 @@ public interface RouteService {
 
 
     RouteViewModel findRouteById(Long id);
+
+    void addNewRoute(RouteServiceModel routeServiceModel);
+
 }

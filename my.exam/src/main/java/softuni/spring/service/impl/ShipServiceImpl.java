@@ -13,6 +13,7 @@ import softuni.spring.service.ShipService;
 import softuni.spring.service.UserService;
 import softuni.spring.user.CurrentUser;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
