@@ -2,57 +2,59 @@ package softuny.my_retake_exam.service.impl;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+
 import softuny.my_retake_exam.model.entity.UserEntity;
 import softuny.my_retake_exam.model.service.UserServiceModel;
 import softuny.my_retake_exam.repository.UserRepository;
 import softuny.my_retake_exam.service.UserService;
 import softuny.my_retake_exam.user.CurrentUser;
 
+import java.util.Optional;
+
+
 @Service
+
 public class UserServiceImpl implements UserService {
+    private final CurrentUser currentUser;
     private final UserRepository userRepository;
     private final ModelMapper modelMapper;
-    private final CurrentUser currentUser;
 
-    public UserServiceImpl(UserRepository userRepository, ModelMapper modelMapper, CurrentUser currentUser) {
+    public UserServiceImpl(CurrentUser currentUser, UserRepository userRepository, ModelMapper modelMapper) {
+        this.currentUser = currentUser;
         this.userRepository = userRepository;
         this.modelMapper = modelMapper;
-        this.currentUser = currentUser;
     }
 
     @Override
-    public boolean isUserNameFree(String userName) {
-        return !userRepository.existsByUsername(userName);
-    }
+    public boolean registerUser(UserServiceModel userServiceModel) {
+        UserEntity userEntity = modelMapper.map(userServiceModel, UserEntity.class);
 
-    @Override
-    public boolean registerUser(UserServiceModel serviceModel) {
-        UserEntity userEntity = modelMapper.map(serviceModel, UserEntity.class);
-        try {
             userRepository.save(userEntity);
-        }catch (Exception e){
+
+
+
+        return true;
+    }
+
+
+    @Override
+    public boolean loginUser(UserServiceModel userServiceModel) {
+       UserEntity userEntity = userRepository.findByUsernameAndPassword(userServiceModel.getUsername(), userServiceModel.getPassword()).orElse(null);
+            if (userEntity == null){
             return false;
         }
+        currentUser.setId(userEntity.getId())
+                .setUsername(userEntity.getUsername());
         return true;
     }
 
     @Override
-    public UserServiceModel findByUsernameAndPassword(String username, String password) {
-        return userRepository.findByUsernameAndPassword(username, password)
-                .map(userEntity -> modelMapper.map(userEntity, UserServiceModel.class))
-                .orElse(null);
-    }
-    @Override
-    public void loginUser(UserServiceModel userServiceModel) {
-        currentUser.setId(userServiceModel.getId());
-
+    public boolean isUserNameFree(String userName) {
+        return !userRepository.existsByUsername(userName.toLowerCase());
     }
 
 
-    @Override
-    public UserEntity findById(Long id) {
-        return userRepository.findById(id).orElse(null);
-    }
+
 
 
 }

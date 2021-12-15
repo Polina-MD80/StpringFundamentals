@@ -1,21 +1,18 @@
 package softuny.my_retake_exam.model.entity;
 
-import javax.persistence.*;
-import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "users")
 public class UserEntity extends BaseEntity{
-    @Column(nullable = false, unique = true)
+    @Column(unique = true, nullable = false)
     private String username;
     @Column(nullable = false)
-    private String fullName;
-    @Column(nullable = false)
     private String password;
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String email;
-
-
 
     public UserEntity() {
     }
@@ -35,15 +32,6 @@ public class UserEntity extends BaseEntity{
 
     public UserEntity setPassword(String password) {
         this.password = password;
-        return this;
-    }
-
-    public String getFullName() {
-        return fullName;
-    }
-
-    public UserEntity setFullName(String fullName) {
-        this.fullName = fullName;
         return this;
     }
 

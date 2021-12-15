@@ -1,11 +1,10 @@
 package softuny.my_retake_exam.model.service;
 
 public class UserServiceModel {
-    private Long id;
-    private String username;
-    private String fullName;
-    private String email;
-    private String password;
+   private Long id;
+   private String username;
+   private String email;
+   private String password;
 
     public UserServiceModel() {
     }
@@ -25,15 +24,6 @@ public class UserServiceModel {
 
     public UserServiceModel setUsername(String username) {
         this.username = username;
-        return this;
-    }
-
-    public String getFullName() {
-        return fullName;
-    }
-
-    public UserServiceModel setFullName(String fullName) {
-        this.fullName = fullName;
         return this;
     }
 

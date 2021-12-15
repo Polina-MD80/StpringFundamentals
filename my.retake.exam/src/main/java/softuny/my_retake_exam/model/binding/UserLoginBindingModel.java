@@ -1,20 +1,15 @@
 package softuny.my_retake_exam.model.binding;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class UserLoginBindingModel {
     @NotBlank
-    @Size(min = 3, max = 10, message = "Username length must be between 3 and 10 characters")
+    @Size(min = 3, max = 20, message = "Username length must be between 3 and 20 characters.")
     private String username;
-    @NotNull
-    @Size(min = 3, message = "Password length must more than 3 characters")
+
+    @Size(min = 3, max = 20, message = "Password length must be between 3 and 20 characters.")
     private String password;
-
-
-    public UserLoginBindingModel() {
-    }
 
     public String getUsername() {
         return username;
@@ -33,5 +28,4 @@ public class UserLoginBindingModel {
         this.password = password;
         return this;
     }
-
 }
